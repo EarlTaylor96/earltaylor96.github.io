@@ -26,14 +26,14 @@ header {
 
 /* Style the main content section */
 section {
-  padding: 20px;
+  display: flex; /* Use flexbox for layout */
+  height: auto; /* Adjust based on content */
+  min-height: calc(100vh - 70px); /* Subtract header and footer height */
 }
 
-/* Create two columns/boxes that float next to each other */
+/* Style the navigation bar */
 nav {
-  float: left;
   width: 30%;
-  height: auto; /* Dynamic height */
   background: lightgrey;
   padding: 20px;
 }
@@ -60,18 +60,9 @@ nav ul li a:hover {
 
 /* Article for main content */
 article {
-  float: left;
+  flex: 1; /* Take up remaining space */
   padding: 20px;
-  width: 70%;
   background-color: lightgreen;
-  height: auto; /* Dynamic height */
-}
-
-/* Clear floats after the columns */
-section::after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 /* Style the footer */
@@ -82,11 +73,14 @@ footer {
   color: white;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other on small screens */
+/* Responsive layout - makes the nav and article stack vertically on smaller screens */
 @media (max-width: 600px) {
+  section {
+    flex-direction: column;
+  }
+
   nav, article {
     width: 100%;
-    height: auto;
   }
 }
 </style>
@@ -101,9 +95,9 @@ footer {
   <!-- Navigation bar for hobbies -->
   <nav>
     <ul>
-      <li><a href="https://overwatch.blizzard.com/en-us/" target="_blank">Calculate Childs College Savings:(Go to Overwatch)</a></li>
-      <li><a href="https://tpwd.texas.gov/fishboat/fish/recreational/lakes/belton/" target="_blank"> Calculate IRA returns: (Belton Fishing)</a></li>
-      <li><a href="https://www.youtube.com/@vanamsen" target="_blank">Calculate Debts: (LeetCode Review)</a></li>
+      <li><a href="https://overwatch.blizzard.com/en-us/" target="_blank">Calculate Child's College Savings (Overwatch)</a></li>
+      <li><a href="https://tpwd.texas.gov/fishboat/fish/recreational/lakes/belton/" target="_blank">Calculate IRA Returns (Belton Fishing)</a></li>
+      <li><a href="https://www.youtube.com/@vanamsen" target="_blank">Calculate Debts (LeetCode Review)</a></li>
     </ul>
   </nav>
   
