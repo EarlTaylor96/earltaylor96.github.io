@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Taylor'd Financial Institution</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the header */
+header {
+  background-color: lightblue;
+  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Style the main content section */
+section {
+  display: flex; /* Use flexbox for layout */
+  height: auto; /* Adjust based on content */
+  min-height: calc(100vh - 70px); /* Subtract header and footer height */
+}
+
+/* Style the navigation bar */
+nav {
+  width: 30%;
+  background: lightgrey;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin-bottom: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: darkblue;
+}
+
+/* Article for main content */
+article {
+  flex: 1; /* Take up remaining space */
+  padding: 20px;
+  background-color: lightgreen;
+}
+
+/* Style the footer */
+footer {
+  background-color: lightgrey;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the nav and article stack vertically on smaller screens */
+@media (max-width: 600px) {
+  section {
+    flex-direction: column;
+  }
+
+  nav, article {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>Taylor'd Financial Institution</h2>
+</header>
+
+<section>
+  <!-- Navigation bar for hobbies -->
+  <nav>
+    <ul>
+      <li><a href="https://overwatch.blizzard.com/en-us/" target="_blank">Calculate Child's College Savings (Overwatch)</a></li>
+      <li><a href="https://tpwd.texas.gov/fishboat/fish/recreational/lakes/belton/" target="_blank">Calculate IRA Returns (Belton Fishing)</a></li>
+      <li><a href="https://www.youtube.com/@vanamsen" target="_blank">Calculate Debts (LeetCode Review)</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Main article for personal introduction -->
+  <article>
+    <h1>About Earl Taylor</h1>
+    <p>HELLO, my name is Earl Taylor, and I'm from Maryland. I'm very family-oriented and spend most of my time with my stepkids and wife. I also like playing video games, fishing, and learning new things about software. One day, I would like to work as a software engineer.</p>
+    <p>My favorite video game is Overwatch. It's a first-person shooter that's oriented around teamwork.</p>
+    <p>My favorite fish to fish for is bass; sometimes, the family accompanies me. I enjoy learning new things about software. I recently started doing this and have dedicated at least half an hour to watching a day-in-the-life video or a video reviewing a LeetCode problem.</p>
+    <div style="display: flex; gap: 10px; margin-top: 20px;">
+      <img src="49274365_595863114200469_4136110775141924864_n.jpg" alt="Family" style="width: 25%; height: auto;">
+      <img src="Overwatch.jpg.avif" alt="Overwatch" style="width: 25%; height: auto;">
+    </div>
+  </article>
+</section>
+
+<footer>
+  <p>&copy; 2024 Taylor'd Financial Institution</p>
+</footer>
+
+</body>
+</html>
