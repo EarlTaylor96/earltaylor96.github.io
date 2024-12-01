@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>College Savings Calculator</title>
+    <script>
+      function calculateSavings() {
+        const currentYear = new Date().getFullYear();
+
+        // Fetch values from input fields
+        const childAge = parseInt(document.getElementById("childAge").value) || 0;
+        const graduationYear = parseInt(document.getElementById("graduationYear").value) || 0;
+        const monthlySavings = parseFloat(document.getElementById("monthlySavings").value) || 0;
+        const interestRate = parseFloat(document.getElementById("interestRate").value) || 0;
+
+        // Calculate years until graduation
+        const yearsUntilGraduation = graduationYear - currentYear;
+
+        if (yearsUntilGraduation <= 0) {
+          document.getElementById("savingsResult").innerText =
+            "Graduation year must be in the future.";
+          return;
+        }
+
+        // Compound interest formula for total savings: FV = PMT * [(1 + r)^n - 1] / r
+        const annualInterestRate = interestRate / 100;
+        const months = yearsUntilGraduation * 12;
+        const monthlyRate = annualInterestRate / 12;
+        const futureValue =
+          monthlySavings *
+          ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) *
+          (1 + monthlyRate);
+
+        // Display result
+        document.getElementById("savingsResult").innerText = `
+          To save for college, you need to save approximately $${futureValue.toFixed(
+            2
+          )}.
+        `;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>College Savings Calculator</h1>
+    <form>
+      <table>
+        <tr>
+          <td>Child's Age:</td>
+          <td><input type="number" id="childAge" placeholder="Enter age" /></td>
+        </tr>
+        <tr>
+          <td>Expected Graduation Year:</td>
+          <td>
+            <input type="number" id="graduationYear" placeholder="Enter year" />
+          </td>
+        </tr>
+        <tr>
+          <td>Monthly Savings Amount ($):</td>
+          <td>
+            <input type="number" id="monthlySavings" placeholder="Enter amount" />
+          </td>
+        </tr>
+        <tr>
+          <td>Annual Interest Rate (%):</td>
+          <td>
+            <input type="number" id="interestRate" placeholder="Enter rate" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="button" onclick="calculateSavings()">Calculate</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p id="savingsResult"></p>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
