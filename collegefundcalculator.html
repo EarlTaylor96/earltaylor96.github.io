@@ -70,6 +70,27 @@
         margin-top: 20px;
         font-weight: bold;
       }
+
+      .content {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: justify;
+        line-height: 1.6;
+      }
+
+      .video-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      iframe {
+        border: none;
+      }
     </style>
     <script>
       function calculateSavings() {
@@ -146,7 +167,25 @@
         </tr>
       </table>
     </form>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/e5l9IYf-Izw?si=AI1EtpEOhPo6K6ko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div class="content">
+      <p>
+        Saving for college is essential because it helps reduce the reliance on student loans, which can burden graduates with years of debt repayment. By starting early, families can take advantage of compounding interest, allowing savings to grow significantly over time and minimizing out-of-pocket contributions. A dedicated college fund ensures that tuition, housing, and other expenses don’t strain household finances or require sacrificing other financial priorities. Additionally, having savings promotes financial security and provides students with the freedom to focus on academics and extracurricular activities without the stress of juggling part-time jobs or financial constraints.
+      </p>
+      <p>
+        College savings also offer tax benefits, particularly through specialized plans like 529 accounts, which allow contributions to grow tax-free when used for education expenses. This preparation also helps families handle unpredictable costs, such as fees, technology, or study-abroad programs. By prioritizing savings, parents demonstrate a commitment to education and set clear expectations for their children’s future. Ultimately, having a robust college savings plan empowers students to pursue their dreams without the financial stress, laying a strong foundation for success in education and beyond.
+      </p>
+    </div>
+
+    <div class="video-container">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/e5l9IYf-Izw?si=AI1EtpEOhPo6K6ko"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
   </body>
 </html>
-
