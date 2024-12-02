@@ -1,68 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Child Graduation Calculator</title>
+    <title>T-Shirt Purchase Calculator</title>
     <script>
-      function calculateYearsToGraduation() {
-        const currentYear = new Date().getFullYear();
+      function calculateTotal() {
+        const pricePerShirt = 18.99;
+        const discountThreshold = 50;
+        const discountRate = 0.05;
+        const salesTaxRate = 0.0625;
 
-        // Fetch values from input fields
-        const firstChildGraduation = parseInt(document.getElementById("firstGraduation").value) || 0;
-        const secondChildGraduation = parseInt(document.getElementById("secondGraduation").value) || 0;
-        const thirdChildGraduation = parseInt(document.getElementById("thirdGraduation").value) || 0;
+        // Fetch the number of t-shirts from input
+        const numberOfShirts = parseInt(document.getElementById("numShirts").value) || 0;
 
-        // Calculate years remaining until graduation
-        document.getElementById("firstYearsRemaining").innerText = firstChildGraduation
-          ? firstChildGraduation - currentYear + " years"
-          : "N/A";
-        document.getElementById("secondYearsRemaining").innerText = secondChildGraduation
-          ? secondChildGraduation - currentYear + " years"
-          : "N/A";
-        document.getElementById("thirdYearsRemaining").innerText = thirdChildGraduation
-          ? thirdChildGraduation - currentYear + " years"
-          : "N/A";
+        // Calculate the subtotal
+        const subtotal = numberOfShirts * pricePerShirt;
+
+        // Determine discount
+        const discount = subtotal > discountThreshold ? subtotal * discountRate : 0;
+
+        // Calculate sales tax
+        const salesTax = (subtotal - discount) * salesTaxRate;
+
+        // Calculate the final total
+        const total = subtotal - discount + salesTax;
+
+        // Display results
+        document.getElementById("subtotal").innerText = `Subtotal: $${subtotal.toFixed(2)}`;
+        document.getElementById("discount").innerText = `Discount: -$${discount.toFixed(2)}`;
+        document.getElementById("salesTax").innerText = `Sales Tax: $${salesTax.toFixed(2)}`;
+        document.getElementById("total").innerText = `Total: $${total.toFixed(2)}`;
       }
     </script>
   </head>
   <body>
+    <h1>T-Shirt Purchase Calculator</h1>
     <form>
       <table>
         <tr>
-          <td>First Child's Name:</td>
-          <td><input type="text" /></td>
+          <td>Number of T-Shirts:</td>
+          <td><input type="number" id="numShirts" placeholder="Enter quantity" /></td>
         </tr>
         <tr>
-          <td>Second Child's Name:</td>
-          <td><input type="text" /></td>
-        </tr>
-        <tr>
-          <td>Third Child's Name:</td>
-          <td><input type="text" /></td>
-        </tr>
-        <tr>
-          <td>First Child's Graduation Date:</td>
-          <td>
-            <input type="text" id="firstGraduation" placeholder="YYYY" />
-            <span id="firstYearsRemaining"></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Second Child's Graduation Date:</td>
-          <td>
-            <input type="text" id="secondGraduation" placeholder="YYYY" />
-            <span id="secondYearsRemaining"></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Third Child's Graduation Date:</td>
-          <td>
-            <input type="text" id="thirdGraduation" placeholder="YYYY" />
-            <span id="thirdYearsRemaining"></span>
+          <td colspan="2">
+            <button type="button" onclick="calculateTotal()">Calculate</button>
           </td>
         </tr>
         <tr>
           <td colspan="2">
-            <button type="button" onclick="calculateYearsToGraduation()">Calculate</button>
+            <p id="subtotal"></p>
+            <p id="discount"></p>
+            <p id="salesTax"></p>
+            <p id="total"></p>
           </td>
         </tr>
       </table>
