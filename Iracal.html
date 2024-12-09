@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IRA Returns Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+
+      h1 {
+        text-align: center;
+        background-color: #4caf50;
+        color: white;
+        margin: 0;
+        padding: 20px;
+      }
+
+      form {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 10px;
+        vertical-align: middle;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #iraResult {
+        font-size: 18px;
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+    <script>
+      function calculateIRA() {
+        // Fetch values from input fields
+        const currentBalance = parseFloat(document.getElementById("currentBalance").value) || 0;
+        const annualContribution = parseFloat(document.getElementById("annualContribution").value) || 0;
+        const expectedRateOfReturn = parseFloat(document.getElementById("expectedRateOfReturn").value) / 100 || 0;
+        const currentAge = parseInt(document.getElementById("currentAge").value) || 0;
+        const retirementAge = parseInt(document.getElementById("retirementAge").value) || 0;
+        const yearsToRetirement = retirementAge - currentAge;
+
+        if (yearsToRetirement <= 0) {
+          document.getElementById("iraResult").innerText =
+            "Retirement age must be greater than current age.";
+          return;
+        }
+
+        // Compound interest formula: FV = PV * (1 + r)^n + PMT * [(1 + r)^n - 1] / r
+        const futureValueBalance =
+          currentBalance * Math.pow(1 + expectedRateOfReturn, yearsToRetirement);
+        const futureValueContributions =
+          annualContribution *
+          ((Math.pow(1 + expectedRateOfReturn, yearsToRetirement) - 1) /
+            expectedRateOfReturn);
+
+        const totalIRA = futureValueBalance + futureValueContributions;
+
+        // Display result
+        document.getElementById("iraResult").innerText = `
+          Your IRA balance at retirement would approximately be $${totalIRA.toFixed(2)}.
+        `;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>IRA Returns Calculator</h1>
+    <form>
+      <table>
+        <tr>
+          <td>Current Balance ($):</td>
+          <td><input type="number" id="currentBalance" placeholder="Enter balance" /></td>
+        </tr>
+        <tr>
+          <td>Annual Contribution ($):</td>
+          <td>
+            <input type="number" id="annualContribution" placeholder="Enter contribution" />
+          </td>
+        </tr>
+        <tr>
+          <td>Expected Rate of Return (%):</td>
+          <td>
+            <input
+              type="number"
+              id="expectedRateOfReturn"
+              placeholder="Enter rate"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Current Age:</td>
+          <td><input type="number" id="currentAge" placeholder="Enter age" /></td>
+        </tr>
+        <tr>
+          <td>Retirement Age:</td>
+          <td><input type="number" id="retirementAge" placeholder="Enter age" /></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="button" onclick="calculateIRA()">Calculate</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p id="iraResult"></p>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
