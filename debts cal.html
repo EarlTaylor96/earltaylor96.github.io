@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Total Debts Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e8f5e9;
+      }
+
+      h1 {
+        text-align: center;
+        background-color: #66bb6a;
+        color: white;
+        margin: 0;
+        padding: 20px;
+      }
+
+      form {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 10px;
+        vertical-align: middle;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #66bb6a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #57a05b;
+      }
+
+      #totalDebtsResult {
+        font-size: 18px;
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+    <script>
+      function calculateTotalDebts() {
+        const debtAmounts = document.querySelectorAll(".debtAmount");
+        let totalDebts = 0;
+
+        // Sum all debt amounts
+        debtAmounts.forEach((input) => {
+          const amount = parseFloat(input.value) || 0;
+          totalDebts += amount;
+        });
+
+        // Display total debts
+        document.getElementById("totalDebtsResult").innerText = `
+          Your total debts amount to $${totalDebts.toFixed(2)}.
+        `;
+      }
+
+      function addDebtField() {
+        const debtFieldsContainer = document.getElementById("debtFields");
+        const newRow = document.createElement("tr");
+
+        newRow.innerHTML = `
+          <td><input type="text" placeholder="Debt Name" /></td>
+          <td><input type="number" class="debtAmount" placeholder="Amount ($)" /></td>
+        `;
+        debtFieldsContainer.appendChild(newRow);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Total Debts Calculator</h1>
+    <form>
+      <table>
+        <thead>
+          <tr>
+            <th>Debt Name</th>
+            <th>Amount ($)</th>
+          </tr>
+        </thead>
+        <tbody id="debtFields">
+          <tr>
+            <td><input type="text" placeholder="Debt Name" /></td>
+            <td><input type="number" class="debtAmount" placeholder="Amount ($)" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" onclick="addDebtField()">Add Another Debt</button>
+      <button type="button" onclick="calculateTotalDebts()">Calculate Total Debts</button>
+      <p id="totalDebtsResult"></p>
+    </form>
+  </body>
+</html>
